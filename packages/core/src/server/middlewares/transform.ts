@@ -1,9 +1,9 @@
 import { NextHandleFunction } from 'connect'
 import createDebug from 'debug'
 
+import { cleanUrl, isJSRequest } from '@/helpers'
 import { ServerContext } from '@/server/types'
 
-import { cleanUrl, isJSRequest } from './helpers'
 import { SourceDescription } from 'rollup'
 
 const debug = createDebug('dev')

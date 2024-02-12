@@ -1,11 +1,8 @@
 import path from 'path'
 
-import { HASH_RE, JS_TYPES_RE, QUERY_RE } from './constants'
+import { JS_TYPES_RE } from '@/constants'
 
-/** 去除 url 的 search params 和 hash value */
-export function cleanUrl(url: string): string {
-  return url.replace(HASH_RE, '').replace(QUERY_RE, '')
-}
+import { cleanUrl } from './clean-url'
 
 export function isJSRequest(url: string): boolean {
   url = cleanUrl(url)
