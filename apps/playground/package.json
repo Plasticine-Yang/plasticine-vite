@@ -1,14 +1,11 @@
 {
-  "name": "playground",
+  "name": "@plasticine-vite/playground",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "cli": "plasticine-vite"
   },
-  "devDependencies": {
-    "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+  "dependencies": {
+    "@plasticine-vite/core": "workspace:^"
   }
 }
