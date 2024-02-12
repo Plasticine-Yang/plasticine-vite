@@ -10,8 +10,8 @@ cli
   .command('[root]', 'Run the development server')
   .alias('serve')
   .alias('dev')
-  .action(async () => {
-    await startDevServer()
+  .action(async (root: string = process.cwd()) => {
+    await startDevServer(root)
   })
 
 cli.help()
