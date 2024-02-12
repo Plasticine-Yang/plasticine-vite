@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "cli": "plasticine-vite"
+    "dev": "plasticine-vite dev"
   },
   "dependencies": {
     "@plasticine-vite/core": "workspace:^",
