@@ -9,7 +9,7 @@ import { resolvePlugins } from '@/plugin'
 import { PluginContainerImpl } from '@/plugin-container'
 
 import type { ServerContext } from './types'
-import { middlewareIndexHtml } from './middlewares'
+import { middlewareIndexHtml, middlewareTransform } from './middlewares'
 
 const { blue, green } = picocolors
 
@@ -34,6 +34,9 @@ export async function startDevServer(root: string) {
 
   // 处理入口 html
   app.use(middlewareIndexHtml(serverContext))
+
+  // 转译文件
+  app.use(middlewareTransform(serverContext))
 
   app.listen(3000, async () => {
     await optimize(root)
