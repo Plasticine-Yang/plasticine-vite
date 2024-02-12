@@ -1,5 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 
-console.log(React)
-console.log(ReactDOM)
+import App from './App'
+
+ReactDOM.createRoot(document.querySelector('#root')!).render(<App />)
