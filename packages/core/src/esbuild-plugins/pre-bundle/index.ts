@@ -6,9 +6,8 @@ import fs from 'fs-extra'
 import { extname } from 'path'
 import resolve from 'resolve'
 
+import { DEPENDENCY_PACKAGE_RE } from '@/constants'
 import { normalizePath } from '@/helpers'
-
-import { DEPENDENCY_PACKAGE_RE } from '../constants'
 
 const debug = createDebug('dev')
 

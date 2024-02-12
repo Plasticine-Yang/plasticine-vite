@@ -13,7 +13,7 @@ import type { PluginContainer } from './types'
 /**
  * 插件上下文对象 - 这里仅实现上下文对象的 resolve 方法
  */
-class Context implements Pick<RollupPluginContext, 'resolve'> {
+export class PluginContext implements Pick<RollupPluginContext, 'resolve'> {
   constructor(private pluginContainer: PluginContainer) {}
 
   async resolve(id: string, importer?: string) {
@@ -27,7 +27,7 @@ export class PluginContainerImpl implements PluginContainer {
   constructor(private plugins: Plugin[]) {}
 
   async resolveId(id: string, importer?: string | undefined): Promise<PartialResolvedId | null> {
-    const ctx = new Context(this)
+    const ctx = new PluginContext(this)
 
     for (const plugin of this.plugins) {
       if (plugin.resolveId) {
@@ -44,7 +44,7 @@ export class PluginContainerImpl implements PluginContainer {
   }
 
   async load(id: string): Promise<LoadResult> {
-    const ctx = new Context(this)
+    const ctx = new PluginContext(this)
 
     for (const plugin of this.plugins) {
       if (plugin.load) {
@@ -60,7 +60,7 @@ export class PluginContainerImpl implements PluginContainer {
   }
 
   async transform(code: string, id: string): Promise<SourceDescription | null> {
-    const ctx = new Context(this)
+    const ctx = new PluginContext(this)
     let transformedCode = code
 
     for (const plugin of this.plugins) {

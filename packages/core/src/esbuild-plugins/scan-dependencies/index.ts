@@ -1,7 +1,8 @@
 import type { Plugin } from 'esbuild'
 
+import { DEPENDENCY_PACKAGE_RE } from '@/constants'
+
 import { EXTERNAL_TYPES } from './constants'
-import { DEPENDENCY_PACKAGE_RE } from '../constants'
 
 /** 依赖扫描 */
 export function scanDependencies(deps: Set<String>): Plugin {
