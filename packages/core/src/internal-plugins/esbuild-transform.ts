@@ -1,5 +1,5 @@
 import esbuild from 'esbuild'
-import { readFile } from 'fs-extra'
+import fs from 'fs-extra'
 import path from 'path'
 
 import { isJSRequest } from '@/helpers'
@@ -13,7 +13,7 @@ export function internalPluginEsbuildTransform(): Plugin {
     async load(id) {
       if (isJSRequest(id)) {
         try {
-          const code = await readFile(id, 'utf-8')
+          const code = await fs.readFile(id, 'utf-8')
           return code
         } catch (e) {
           return null

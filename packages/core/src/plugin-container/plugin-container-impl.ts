@@ -65,7 +65,7 @@ export class PluginContainerImpl implements PluginContainer {
 
     for (const plugin of this.plugins) {
       if (plugin.transform) {
-        const result = await plugin.transform.call(ctx, code, id)
+        const result = await plugin.transform.call(ctx, transformedCode, id)
 
         if (!result) continue
         if (typeof result === 'string') {

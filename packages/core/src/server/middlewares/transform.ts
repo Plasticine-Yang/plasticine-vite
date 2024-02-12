@@ -48,7 +48,6 @@ export function middlewareTransform(serverContext: ServerContext): NextHandleFun
 
     // transform JS request
     if (isJSRequest(url)) {
-      // 核心编译函数
       const result = await transformRequest(url, serverContext)
 
       if (!result) {

@@ -1,4 +1,4 @@
-import { pathExists } from 'fs-extra'
+import fs from 'fs-extra'
 import path from 'path'
 import resolve from 'resolve'
 
@@ -24,13 +24,13 @@ export function internalPluginResolveRequestPath(): Plugin {
 
       // 1. 绝对路径
       if (path.isAbsolute(id)) {
-        if (await pathExists(id)) {
+        if (await fs.pathExists(id)) {
           return { id }
         }
 
         // 加上 root 路径前缀，处理 /src/main.tsx 的情况
         id = path.join(root, id)
-        if (await pathExists(id)) {
+        if (await fs.pathExists(id)) {
           return { id }
         }
       }
@@ -47,7 +47,7 @@ export function internalPluginResolveRequestPath(): Plugin {
         if (hasExtension) {
           // 2.1 包含文件名后缀 - 如 ./App.tsx
           resolvedId = normalizePath(resolve.sync(id, { basedir: path.dirname(importer) }))
-          if (await pathExists(resolvedId)) {
+          if (await fs.pathExists(resolvedId)) {
             return { id: resolvedId }
           }
         } else {
@@ -63,7 +63,7 @@ export function internalPluginResolveRequestPath(): Plugin {
                 }),
               )
 
-              if (await pathExists(resolvedId)) {
+              if (await fs.pathExists(resolvedId)) {
                 return { id: resolvedId }
               }
             } catch (e) {
